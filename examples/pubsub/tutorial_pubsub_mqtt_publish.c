@@ -54,7 +54,7 @@
 #define CONNECTIONOPTION_NAME        "mqttClientId"
 #define PUBLISHER_TOPIC              "customTopic"
 #define PUBLISHER_METADATAQUEUENAME  "MetaDataTopic"
-#define PUBLISHER_METADATAUPDATETIME 0
+#define PUBLISHER_METADATAUPDATETIME 0     
 #define BROKER_ADDRESS_URL           "opc.mqtt://127.0.0.1:1883"
 #define PUBLISH_INTERVAL             500
 
@@ -100,7 +100,7 @@ addPubSubConnection(UA_Server *server, char *addressUrl) {
     /* configure address of the mqtt broker (local on default port) */
     UA_NetworkAddressUrlDataType networkAddressUrl = {UA_STRING_NULL , UA_STRING(addressUrl)};
     UA_Variant_setScalar(&connectionConfig.address, &networkAddressUrl,
-                         &UA_TYPES[UA_TYPES_NETWORKADDRESSURLDATATYPE]);
+                         &UA_TYPES[UA_TYPES_NETWORKADDRESSURLDATATYPE]);      
     /* Changed to static publisherId from random generation to identify
      * the publisher on Subscriber side */
     connectionConfig.publisherId.numeric = 2234;
@@ -321,8 +321,8 @@ addDataSetWriter(UA_Server *server, char *topic) {
 
         messageSettings.encoding = UA_EXTENSIONOBJECT_DECODED;
         messageSettings.content.decoded.type = &UA_TYPES[UA_TYPES_JSONDATASETWRITERMESSAGEDATATYPE];
-        messageSettings.content.decoded.data = &jsonDswMd;
-
+        //messageSettings.content.decoded.data = &jsonDswMd;
+        messageSettings.content.decoded.data = 77;
         dataSetWriterConfig.messageSettings = messageSettings;
     }
 #endif

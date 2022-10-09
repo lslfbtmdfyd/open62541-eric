@@ -354,7 +354,7 @@ endif()
 option(UA_FORCE_WERROR "Force compilation with -Werror (or /WX on MSVC)" ON)
 
 #General PubSub setup
-option(UA_ENABLE_PUBSUB "Enable the PubSub protocol" OFF)
+option(UA_ENABLE_PUBSUB "Enable the PubSub protocol" ON)
 
 option(UA_ENABLE_PUBSUB_ENCRYPTION "Enable encryption of the PubSub payload" OFF)
 mark_as_advanced(UA_ENABLE_PUBSUB_ENCRYPTION)
@@ -424,7 +424,7 @@ if(UA_ENABLE_PUBSUB_BUFMALLOC)
     endif()
 endif()
 
-option(UA_ENABLE_PUBSUB_MQTT "Enable publish/subscribe with mqtt (experimental)" OFF)
+option(UA_ENABLE_PUBSUB_MQTT "Enable publish/subscribe with mqtt (experimental)" ON)
 mark_as_advanced(UA_ENABLE_PUBSUB_MQTT)
 if(UA_ENABLE_PUBSUB_MQTT)
     if(NOT UA_FILE_MQTT)
